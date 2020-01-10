@@ -1,0 +1,843 @@
+/*
+    1- Common
+    2- General Css Style
+    3- section
+        3.0 - Header Section
+        3.1 - Home Section
+        3.2 - About Section
+        3.3 - Portfolio Section
+        3.4 - Services Section
+        3.5 - Prices Section
+        3.6 - Team Section
+        3.7 - Blog Page
+        3.8 - Contact Section
+        3.9 - Footer Section 
+*/
+/* 1- Common */
+/*
+    - overlay
+    - Opacity hover
+    - Section header
+    - section padding
+    - Hover effect 1 (left to right)
+    - Hover effect 2 (top to bottom)
+*/
+/* 1-common */
+:root{/* عمل متغير لتديد اللون الرئيسى للموقع*/
+    --maincolor: #6195ff;
+}
+.overlay{
+    position: absolute;
+    background-color: rgba(0,0,0,0.7);
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+.ltr-effect{
+    position: relative;
+}
+.ltr-effect::after{
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 100%;
+    background: #1c1d21;
+    top: 0;
+    left: 0;
+    transition: width 1s;
+    z-index: -1;
+}
+.ltr-effect:hover::after{
+    width: 100%; 
+}
+.ttb-effect{
+   position: relative;
+}
+.ttb-effect::after{
+    position: absolute;
+    content: "";
+    background: #1c1d21;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    transition: height 1s;
+    z-index: -1;
+}
+.team-item.ttb-effect{
+    z-index: 1;
+}
+.ttb-effect:hover::after{
+    height: 100%;
+}
+.hover-opacity {
+    transition: opacity .5s; /* يتحكم فى سرعه و بطئ الشفافيه */
+}
+.hover-opacity:hover{
+    opacity: 0.8;
+} 
+
+/* 2- General Css Style*/
+.container{
+    width: 80%;
+    margin: 0 auto;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box /* Css 3 */
+}
+body , button{
+    font-family: 'Varela Round', sans-serif
+}
+.clear{
+    clear: both
+}
+h1 , h2 , h3 , h4 , h5 , h6{
+    font-family: montserrat,sans-serif ;
+}
+.padding-y{
+    padding: 60px 0;
+}
+.header-section {
+    text-align: center;
+}
+.header-section .section-tittle{
+    font-size: 35px;
+    text-transform: capitalize; 
+    margin-bottom: 10px;
+}
+.header-section .line{
+    width: 45px;
+    height: 4px;
+    display: block;
+    background-color: var(--maincolor);
+    margin: 0 auto 70px auto;
+}
+
+/* 3- section */
+
+/* 3.0 - Header Section */
+.header{ 
+    position: fixed; /* fixed  absolute بيحولوا العنصر الى بلوك علشان كدا ادينا عرض*/ 
+    width: 100%;
+    z-index: 1;
+    background-color: rgba(0,0,0,0.3);
+}
+.header .logo{
+    width: 35%;
+    float: left
+}
+.header .logo img {
+    width: 20%;
+    margin-top: 20px;
+}
+.header .nav{
+    width: 65%;
+    float: left;
+    list-style: none;
+    text-align: right;
+}
+.header .nav > li{
+    display: inline-block;
+    margin-right: 7px;
+    text-align: right;
+        
+}
+.header .nav > li > a{
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    padding: 30px 10px
+}
+.dropdown{
+    position: relative;
+}
+.dropdown-menu{
+    position: absolute;
+    background: #6195ff; 
+    width: 150px;
+    text-align: center;
+    left: -50%;
+    top :70%;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 1s;   
+}
+
+.dropdown-menu  a {
+    text-decoration: none;
+    color: #fff;
+    display: block;
+    padding: 10px; 
+}
+.dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+}
+.header .nav > li > a.active::after{
+    content: "";
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: #6195ff;
+}
+.header .nav > li > a::after{
+    content: "";
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #6195ff;
+    transition: width 0.5s;
+}
+.header .nav > li > a:hover::after{
+    content: "";
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: #6195ff;
+}
+
+/* 3.1 Home Section*/
+.home{
+    height: 100vh;
+    background-image: url(../images/background/background1.webp);
+    background-attachment: fixed;
+    background-size: cover; /*css3*/ /*خلى الصوره كامله على اد الديف */
+    position: relative
+}
+.home-content{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    text-align: center; 
+    width: 100%;
+}
+.home-content .tittle{
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 54px;
+    font-weight: 700;    
+}
+.home .home-desc{
+    margin: 10px 0;
+    color: #fff;
+    letter-spacing: 2px;
+    line-height: 1.5;
+}
+.home .btn{
+    min-width: 160px;
+    padding: 15px 35px;
+    border-radius: 2px;
+    border: 0;
+    cursor: pointer;
+    font-size: 18px;
+}
+.home .btn-start{
+    margin-right: 3px;
+    background: #fff;
+}
+.home .btn-learn{
+    background: #6195ff;
+    color: #fff;
+}
+
+/* 3.2 About Section*/
+.About .about-content .about-item{
+    width: 30%;
+    float: left;
+    text-align: center;
+    border: 1px solid #eee;
+    padding: 60px 10px;
+}
+.about-item.mg{
+    margin: 0 5%;
+}
+.about-item .icon{
+    color: #6195ff;
+    margin-bottom: 20px;
+}
+.about-content-tittle{
+    text-transform: capitalize;
+    margin-bottom: 20px;
+    color: #10161a;
+    font-weight: 700;
+    transition: color 1s;
+}
+.about-item:hover .about-content-tittle{
+    color: #fff;
+}
+.about-content-desc{
+    line-height: 1.6;
+    margin-bottom: 20px;
+    color: #868f9b;
+}
+.about-item-link{
+    text-decoration: none;
+    color: #6195ff;
+    text-transform: capitalize;
+}
+
+/* Portfolio Section*/
+.portfolio{
+    background: #fafafa;
+    width: 100%;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}
+.Portfolio-item{
+    width: 32%;
+    float: left;
+    position: relative;
+    padding: 20px;
+}
+.Portfolio-item.mg{
+    margin: 0 1%;
+}
+.Portfolio-item img{
+    width: 100%; 
+}
+.layer-content{
+    position: absolute;
+    top: 0;
+    left: 0;  
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.6);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 1s;
+}
+.Portfolio-item:hover .layer-content{
+    opacity: 1;
+    visibility: visible;
+}
+.layer-content .layer-info{
+    position: absolute;
+    top:50%;
+    left: 50%; 
+    width: 80%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+}
+.category {
+    color: #6195ff;
+    text-transform: uppercase;
+    position: relative;
+    visibility: hidden;
+    top: 10px;
+    opacity: 0;
+    transition: top 0.5s, opacity 0.5s;
+    transition-delay: 0.2s;
+}
+.layer-content-tittle{
+    color: #fff;
+    margin: 15px 0 20px 0;
+    position: relative;
+    visibility: hidden;
+    top: 10px;
+    opacity: 0;
+    transition: top 0.5s, opacity 0.5s;
+    transition-delay: 0.3s;
+}
+.layer-content i{
+    color: #fff;
+    background: #6195ff;
+    padding: 15px;
+    cursor: pointer;
+    position: relative;
+    visibility: hidden;
+    opacity: 0;
+    top: 10px;
+    transition: top 0.5s, opacity 0.5s;
+    transition-delay: 0.3s;
+}
+.Portfolio-item:hover .category,
+.Portfolio-item:hover .layer-content-tittle,
+.Portfolio-item:hover .layer-content i{
+    top: 0;
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Services Section*/
+.offer-item{
+    width: 30%;
+    float: left;
+    border: 1px solid #eee;
+    margin-bottom: 20px;
+    position: relative;
+    padding: 37px 10px 40px 70px;
+}
+.offer-item.mg{
+    margin: 0 5%;
+}
+.offer-item .icon{
+    position: absolute;
+    top: 37px;
+    left: 17px;
+    color: #6195ff;
+}
+.offer-item-tittle{
+    text-transform: capitalize;
+    margin-bottom: 20px;
+    color: #10161a;
+    font-weight: 700;
+    transition: color 1s;
+}
+.offer-item-desc{
+    line-height: 1.6;
+    color: #868f9b;
+    margin-bottom: 20px;
+}
+.offer-item:hover .offer-item-tittle{
+    color: #fff;
+}
+
+/* sevice bottom*/
+.sevicebottom{
+    background: #fafafa;
+    width: 100%;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}
+.service-item {
+    width: 50%;
+    float: left
+}
+.sevicebottom-content .header-section{
+    text-align: left;
+}
+.sevicebottom-content .header-section .line{
+    margin: 0 0 40px 0 ;
+}
+.sevicebottom-content .service-desc{
+    line-height: 1.6;
+    color: #868f9b;
+    padding: 0 20px 20px 0;
+}
+.service-item .service-list{
+    list-style: none;
+    color: #868f9b;
+    margin-top: 20px;
+}
+.service-item .service-list li{
+    margin-bottom: 15px;
+}
+.service-list li i{
+    color: #6195ff;
+    margin-right: 10px;
+    padding: 5px;
+    border: 1px solid #6195ff;
+    border-radius: 50%;
+}
+.service-item .service-img{
+    
+}
+.service-item .service-img img{
+    width: 100%;
+    height: 400px;
+}
+.service-item .service-bullets {
+    list-style: none;
+    text-align: center;
+    margin-top: 10px;
+}
+.service-item .service-bullets li {
+    width: 20px;
+    height: 10px;
+    background:#e8e8e8;
+    display: inline-block;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background 1s;
+    
+}
+.service-item .service-bullets li.active {
+    background:#6195ff;
+}
+.service-bullets li:hover{
+    background:#6195ff;
+}
+
+/* Number Section */
+.number{
+    position: relative;
+    background-image: url(../images/background/background2.webp);
+    background-size: cover;
+    background-attachment: fixed;
+    height: 300px;
+}
+.number-content{
+    padding-top: 100px;
+}
+.numbers-item{
+    float: left;
+    width: 25%;
+    text-align: center;
+}
+.numbers-item .icon{
+    color: #6195ff;
+    margin-bottom: 15px;
+}
+.number-item-tittle{
+    font-weight: bold;
+    font-size: 30px;
+    color: #fff;
+}
+.number-item-desc{
+    color: #fff;
+}
+
+/* Prices Section*/
+.price-item{
+    width: 30%;
+    float: left;
+    text-align: center;
+    border: 1px solid #eee;
+    padding: 40px;
+}
+.price-item.mg{
+    margin: 0 5%;
+}
+.price-item .price-item-text{
+    color: #868f9b;
+    text-transform: uppercase;
+    font-size: 17px;
+    transition: color 1s;
+}
+.price-item:hover .price-item-text{
+    color: #6195ff;
+}
+.price-item-price{
+    border: 2px solid #6195ff;
+    border-radius: 50%;
+    width: 130px;
+    height: 130px;
+    padding: 30px 0;
+    margin: 20px auto;
+    transition: color 1s;
+}
+.price-item:hover .price-item-price{
+    color: #fff;
+}
+.price-item-price .dollar{
+    font-size: 40px; 
+}
+.price-item-price .month{
+    text-transform: uppercase;
+    font-weight: bolder;
+    font-size: 15px;
+}
+.price-item-list{
+    list-style: none;
+    margin-bottom: 20px;
+    color: #868f9b;  
+}
+.price-item-list li{
+    line-height: 2.5;
+    font-size: 17px;
+}
+.price-item-purchase{
+    padding: 15px 50px;
+    border: 0;
+    background: none;
+    border: 2px solid #6195ff;
+    cursor: pointer;
+    color: #6195ff;
+    font-size: 17px;
+    text-transform: capitalize;
+}
+
+
+/* testimonial Section*/
+.testimonial{
+    position: relative;
+    background-image: url(../images/background/background3.webp);
+    width: 100%;
+    height: 400px;
+    background-attachment: fixed;
+    background-size: cover;
+}
+.testimonial .testimonial-content{
+    padding-top: 100px;
+}
+.testimonial .testimonial-section{
+    float: left;
+    width: 50%;
+    color: #fff;
+    text-transform: capitalize;
+}
+.testimonial-section .testimonial-top{
+    padding: 20px 2px 40px 100px;
+    position: relative;
+}
+.testimonial-pic{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    position: absolute;
+    left: 0;
+}
+.testimonial-top .testimonial-tittle{
+    margin-top: 12px;
+    font-size: 20px;
+    font-weight: 800;
+}
+.testimonial-top .testimonial-work{
+    color: #6195ff;
+}
+
+.testimonial-desc{
+    line-height: 1.5;
+    font-size: 17px;
+    padding-right: 40px;
+}
+
+/* Team Section*/
+.team-item{
+    float: left;
+    width: 30%;
+    text-align: center;
+    background: #f4f4f4;
+    padding: 40px 0 5px 0;
+}
+.team-item.mg{
+    margin: 0 5%;
+}
+.team-item .team-img{
+    width: 90%;
+    margin: auto;
+    
+}
+.team-item .team-img img{
+    width: 100%;
+}
+.team-info .team-tittle{
+    font-size: 24px;
+    text-transform: capitalize;
+    color: #10161a;
+    margin: 10px 0;
+    transition: color 1s;
+}
+.team-info .team-desc{
+    color: #868f9b;
+    text-transform: uppercase;
+    font-size: 14px;
+    transition: color 1s;
+}
+.team-img{
+    position: relative;
+}
+.team-img .team-overlay{
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background: rgb(0,0,0,0.5);
+    opacity: 0;
+    visibility: hidden;
+}
+.team-overlay a{
+    text-align: center;
+    display: block;
+    background: #6195ff;
+    width: 50px;
+    height: 50px;  
+    color: #fff;
+    margin-left: auto;
+}
+.team-overlay i{
+    line-height: 40px;
+}
+.team-item:hover .team-overlay{
+    visibility: visible;
+    opacity: 1;
+}
+.team-item:hover .team-tittle{
+    color: #fff;
+}
+.team-item:hover .team-desc{
+    color: #6195ff;
+}
+
+/* Blog */
+.blog{
+    background: #fafafa;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}
+.blog-content .blog-item{
+    width: 30%;
+    float: left;
+    background: #fff;
+}
+.blog-item .blog-info{
+    margin: 20px 20px;
+}
+.blog-content .blog-item.mg{
+    margin: 0 5%;
+}
+.blog-item .blog-img{
+    width: 110%;
+    height: 200px;
+}
+.blog-item .blog-img img{
+    width: 100%;
+    height: 100%;
+}
+.blog-item .blog-list ul{
+    list-style: none;
+}
+.blog-item .blog-list ul li{
+    display: inline-block;
+    color: #10161a;
+    font-size: 14px;
+    margin-left: 5px;
+}
+.blog-item .blog-list ul i{
+    padding-right: 5px;
+    color: #6195ff;
+}
+.blog-item .blog-tittle{
+    color: #10161a;
+    font-size: 21px;
+    margin: 20px 0;
+}
+.blog-item .blog-desc{
+    color: #868f9b;
+    margin-bottom: 20px;
+    line-height: 1.6;
+    font-size: 16px;
+}
+.blog-item .blog-readmore{
+    color: #6195ff;
+    text-decoration: none;
+    text-transform: capitalize;
+    font-size: 16px;
+}
+
+/* Contact Section*/
+.contact-info .contact-item{
+    width: 30%;
+    text-align: center;
+    float: left;
+}
+.contact-info .contact-item.mg{
+    margin: 0 5%;
+}
+.contact-info .contact-item .icon{
+    color: #6195ff;
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+.contact-info .contact-item .contact-tittle{
+    font-size: 21px;
+    margin-bottom: 20px;
+    text-transform: capitalize;
+    color: #10161a;
+    font-weight: 700;
+}
+.contact-info .contact-item .contact-num{
+    color: #868f9b;
+    font-size: 16px;
+    text-transform: uppercase;
+}
+.contact .contact-form{
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 80px;
+}
+.contact .contact-form input[type=text],[type=email],textarea{
+    height: 40px;
+    font-size: 16px;
+    border: none;
+    background: #f4f4f4;
+    border-bottom: 2px solid #eee;
+    padding-left: 15px;
+    color: #354052;
+    text-transform: uppercase;
+    opacity: 0.5;
+    transition: opacity 0.5s;
+}
+.contact .contact-form 
+input[type=text]:focus,
+[type=email]:focus,
+textarea:focus{
+    opacity: 1;
+    border-bottom: 2px solid #6195ff;
+}
+.top-contact input[type=text]{
+    margin-right: 1%;
+}
+.contact-form .top-contact input[type=text],input[type=email]{
+    width: 49%;
+    margin-bottom: 20px;
+}
+.contact-form .bottom-contact{
+    margin-bottom: 20px;
+}
+.contact-form .bottom-contact input[type=text],textarea{
+    width: 100%;
+}
+.contact-form .bottom-contact input[type=text]{
+    margin-bottom: 20px;
+}
+.contact-form .bottom-contact textarea{
+    height: 80px;
+    padding-top: 15px;
+    font-size: 18px;
+}
+.contact-form .btn {
+    text-align: center;
+}
+.contact-form .btn button {
+    background-color: #6195ff;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    text-transform: uppercase;
+    padding: 15px 25px;
+    cursor: pointer;
+    transition: opacity 0.5s;
+}
+.contact-form .btn button:hover{
+    opacity: 0.9;
+}
+/* Footer Section*/
+.footer{
+    background: #1c1d21;
+    text-align: center;
+}
+.footer-link{
+    list-style: none;
+    margin: 20px 0;
+}
+.footer-link li{
+    display: inline-block;
+    margin-right: 5px;
+    cursor: pointer;
+}
+.footer-link li i{
+    display: block;
+    width: 50px;
+    height: 50px;
+    color: #fff;
+    background: #6195ff;
+    font-size: 18px;
+    line-height: 50px;
+    border-radius: 2px;
+}
+.footer .footer-copyright{
+    color: #868f9b;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+.footer .footer-copyright a{
+    text-decoration: none;
+    color: #6195ff;
+}
+/*css لو فى صورة عليها كلام يفضل الخلفيه تتعمل ب */
